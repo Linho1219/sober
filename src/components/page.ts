@@ -2,11 +2,14 @@ import { useElement, useProps } from '../core/elements.js'
 import * as scheme from '../core/scheme.js'
 import { useComputedStyle } from '../core/utils/CSS.js'
 import { MediaQueryer } from '../core/utils/media-queryer.js'
+import { device } from '../core/utils/device.js'
 
 const props = useProps({
   $theme: ['auto', 'light', 'dark'],
   $media: '(prefers-color-scheme: dark)'
 })
+
+const dpr = (!device.isServer && window.devicePixelRatio) || 1
 
 const style = /*css*/`
 :host{
@@ -22,7 +25,7 @@ const style = /*css*/`
   animation-duration: var(--s-motion-duration-long4);
   font-size: calc(var(--s-font-size) * 16px);
   --s-font-size: 1;
-  --s-border-min: ${Number(1 / window.devicePixelRatio).toFixed(6)}px;
+  --s-border-min: ${Number(1 / dpr).toFixed(6)}px;
   --s-color-scrim: var(--s-color-light-scrim);
   --s-color-primary: var(--s-color-light-primary);
   --s-color-on-primary: var(--s-color-light-on-primary);

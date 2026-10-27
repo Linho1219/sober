@@ -1,8 +1,8 @@
-# On Demand Import
+# On-demand import
 
-随着 **Sober** 的更新，组件库可能会越来越大，如果你对大小非常敏感，我们强烈建议你定义对 **Sober** 的按需引入。
+As **Sober** evolves, the component library may grow larger. If you are highly sensitive to bundle size, we strongly recommend defining on-demand imports for **Sober**.
 
-下面是一个例子，新建一个 **sober.js** 文件，编辑以下代码，按你的需要导入组件。
+Here is an example: create a new **sober.js** file and edit the following code to import components as needed.
 
 ```js
 //sober.js
@@ -10,14 +10,14 @@ export * from 'sober/button'
 export * from 'sober/checkbox'
 ```
 
-然后在你的入口文件中引入该文件进行注册组件。
+Then import this file in your entry file to register the components.
 
 ```js
 //mian.js
 import './sober.js'
 ```
 
-完整的组件列表如下：
+The complete component list is as follows:
 
 ```js
 export * from 'sober/alert'
@@ -64,10 +64,10 @@ export * from 'sober/tooltip'
 
 ---
 
-## 浏览器上按需引入
+## On-demand import in the browser
 
-如果你没有使用构建工具，而是直接在浏览器中引入，按需引入会发起多个请求造成首次加载变慢，这是不被推荐的行为。
-如果你对此不敏感，你依旧可以使用下面的方式按需引入每个组件：
+If you are not using a build tool and are importing directly in the browser, on-demand imports will issue multiple requests and slow down the initial load, which is not recommended.
+If this is not a concern for you, you can still use the following approach to import each component on demand:
 
 ```html
 <script type="module">

@@ -68,13 +68,13 @@ const itemStyle = /*css*/`
   white-space: nowrap;
   min-width: 0;
 }
-::slotted(:is(svg, s-icon)){
+::slotted(:where(svg, s-icon)){
   width: 20px;
 }
-::slotted(:is(svg, s-icon)[slot=start]){
+::slotted(:where(svg, s-icon)[slot=start]){
   margin-left: -8px;
 }
-::slotted(:is(svg, s-icon)[slot=end]){
+::slotted(:where(svg, s-icon)[slot=end]){
   margin-right: -8px;
 }
 `

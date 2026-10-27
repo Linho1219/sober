@@ -56,7 +56,7 @@ const style = /*css*/`
   line-height: calc(100% + 4px);
   color: ${scheme.color.onSurfaceVariant};
 }
-::slotted(:is(s-icon-button)[slot=header-action]){
+::slotted(:where(s-icon-button)[slot=header-action]){
   margin: 16px 8px;
 }
 ::slotted([slot=media]){

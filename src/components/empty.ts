@@ -21,7 +21,7 @@ const style = /*css*/`
 .border{
   stroke: ${scheme.color.outline};
 }
-::slotted(:is(.icon, svg, s-icon, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, ms-icon)){
   color: currentColor;
   width: 40px;
   height: 40px;

@@ -5,7 +5,6 @@
 - **自适应**：无需任何配置，所有组件均自动响应桌面、平板、移动端等不同设备。
 - **跨框架**：兼容所有前端框架或后端渲染。
 - **零依赖**：不依赖任何第三方库，体积极小。
-- **多语言**：支持所有语言（取决于浏览器支持的语言数量）。
 - **TypeScript**：提供完整的类型定义文件。
 - **与其他库同时使用**：非侵入性设计，可以和任何 UI 库一起使用。
 - **自定义样式**：所有组件均支持完全自定义样式。
@@ -53,10 +52,20 @@ import 'sober/checkbox'
 
 ---
 
+## 兼容性
+
+**Sober** 在以下浏览器中进行了测试，如果你发现兼容性问题，请提一个 [issue](https://github.com/miralm-ltd/sober/issues/new?template=%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E6%8A%A5%E5%91%8A.md)。
+
+| 浏览器  | 内核     | 版本  |
+| ------- | -------- | ----- |
+| Chrome  | Chromium | 88+   |
+| Firefox | Gecko    | 78+   |
+| Safari  | Webkit   | 15.4+ |
+
 ### 社区
 
 - QQ交流群 [315014446](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=FnDFafEZBleaRTVni5WW428we-q6P038&authKey=j6gtmWnQqNLd%2FonmfMhRG99Zk9Dy1yfOrYe7Ln7rDLdx5Y0%2FgP5ERhLgSbrxU07I&noverify=0&group_code=315014446)
 
 ### 开源许可
 
-**Sober** 使用 [MIT license](https://github.com/unreal-space/sober/blob/main/LICENSE) 许可证书。
+**Sober** 使用 [MIT license](https://github.com/miralm-ltd/sober/blob/main/LICENSE) 许可证书。

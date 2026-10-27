@@ -113,16 +113,15 @@ const template = /*html*/`
       <path d="M280-440h400v-80H280v80Zm-80 320q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z"></path>
     </svg>
   </div>
-  <s-ripple class="ripple" part="ripple" parentDepth="1"></s-ripple>
+  <s-ripple class="ripple" part="ripple" parentDepth="1" syncParentStates></s-ripple>
 </div>
 <slot></slot>
 `
 
 export class Checkbox extends useElement({
-  states: ['focusable', 'formable', 'hoverable', 'pressable'],
+  states: ['focusable', 'formable'],
   style, template, props,
-  setup(shadowRoot, info) {
-    const animate = shadowRoot.querySelector<SVGAnimateElement>('#animate')!
+  setup(_, info) {
     const updateFrom = () => info.internals.setFormValue(this.disabled || !this.checked ? null : this.value)
     this.addEventListener('click', () => {
       if (this.indeterminate) this.indeterminate = false
@@ -131,21 +130,7 @@ export class Checkbox extends useElement({
     })
     return {
       onFormReset: () => this.checked = this.defaultChecked,
-      onAttributeChanged: (name) => ['disabled', 'checked', 'value'].includes(name) && updateFrom(),
-      indeterminate: (v) => {
-
-      },
-      checked: (v) => {
-        if (!info.isConnected) return
-        // if (v) {
-        //   animate.setAttribute('from', paths.unchecked)
-        //   animate.setAttribute('to', paths.checked)
-        //   animate.beginElement()
-        //   console.log('checked', v)
-        // } else {
-
-        // }
-      }
+      onAttributeChanged: (name) => ['disabled', 'checked', 'value'].includes(name) && updateFrom()
     }
   }
 }) { }

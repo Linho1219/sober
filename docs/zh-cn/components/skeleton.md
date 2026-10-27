@@ -11,12 +11,12 @@
 题图列表骨架屏。
 
 ```html preview
-<div style="display: flex; align-items: center">
+<div style="display: flex; align-items: center; gap: 16px;">
   <s-skeleton style="width: 72px; height: 72px"></s-skeleton>
-  <div style="flex-grow: 1; margin-left: 16px">
+  <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px;">
     <s-skeleton></s-skeleton>
-    <s-skeleton style="margin-top: 8px"></s-skeleton>
-    <s-skeleton style="margin-top: 8px; width: 80%"></s-skeleton>
+    <s-skeleton></s-skeleton>
+    <s-skeleton style="width: 80%"></s-skeleton>
   </div>
 </div>
 ```

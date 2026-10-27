@@ -88,28 +88,28 @@ export const textEditorStyle = /*css*/`
     flex-grow: 1;
   }
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
   width: 24px;
   height: 24px;
   font-size: 24px;
 }
-::slotted(:is(.icon, svg, s-icon, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, ms-icon)){
   color: ${scheme.color.onSurfaceVariant};
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=start]){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=start]){
   margin: 12px;
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=end]){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=end]){
   margin: 12px 8px;
 }
 ::slotted(s-button){
   padding: 0 8px;
   border-radius: 8px;
 }
-::slotted(:is(s-icon-button, s-button)[slot=start]){
+::slotted(:where(s-icon-button, s-button)[slot=start]){
   margin: 4px;
 }
-::slotted(:is(s-icon-button, s-button)[slot=end]){
+::slotted(:where(s-icon-button, s-button)[slot=end]){
   margin: 4px 0;
 }
 :host(:focus-visible){
@@ -157,15 +157,15 @@ export const textEditorStyle = /*css*/`
       height: 20px;
     }
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 20px;
     height: 20px;
     font-size: 20px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=start]){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=start]){
     margin: 10px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=end]){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=end]){
     margin: 10px 6px;
   }
 }
@@ -176,16 +176,16 @@ export const textEditorStyle = /*css*/`
   .helper{
     font-size: calc(var(--s-font-size, 1) * 14px);
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=start]){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=start]){
     margin: 16px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=end]){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=end]){
     margin: 16px 12px 16px 8px;
   }
-  ::slotted(:is(s-icon-button, s-button)[slot=start]){
+  ::slotted(:where(s-icon-button, s-button)[slot=start]){
     margin: 8px;
   }
-  ::slotted(:is(s-icon-button, s-button)[slot=end]){
+  ::slotted(:where(s-icon-button, s-button)[slot=end]){
     margin: 8px 4px 8px 0;
   }
 }

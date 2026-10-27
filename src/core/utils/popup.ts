@@ -1,72 +1,70 @@
-import { ResizeWatcher } from './resize-watcher'
+import { ResizeWatcher } from './resize-watcher.js'
 import { getStackingContext } from './get-stacking-context.js'
 
 type Placement = 'top' | 'bottom' | 'left' | 'right'
 
 const showPopover = (anchor: HTMLElement, container: HTMLElement, placement: Placement, margin: number) => {
-  const config = { top: 0, left: 0, origin: ['50%', '0%'] as string[] }
   const rect = anchor.getBoundingClientRect()
-  const containerRect = { width: container.offsetWidth, height: container.offsetHeight }
-  const getSide = (leftOrTop: number, size: number, containerSize: number, innerSize: number) => {
-    const offset = leftOrTop + (size / 2)
-    const center = leftOrTop - (containerSize - size) / 2
-    return { offset, center, min: 0, max: innerSize, containerSize }
-  }
-  const attrs = {
-    x: { inset: 'left', originKey: 0, selfSide: getSide(rect.left, rect.width, containerRect.width, innerWidth) },
-    y: { inset: 'top', originKey: 1, selfSide: getSide(rect.top, rect.height, containerRect.height, innerHeight) }
+  const size = { x: container.offsetWidth, y: container.offsetHeight }
+  const viewport = { x: innerWidth, y: innerHeight }
+  // x/y 统一处理，placement 只决定方向
+  const axis = {
+    top: { main: 'y', side: 'x', sign: -1 },
+    bottom: { main: 'y', side: 'x', sign: 1 },
+    left: { main: 'x', side: 'y', sign: -1 },
+    right: { main: 'x', side: 'y', sign: 1 }
   } as const
-  const calls = {
-    bottom: () => {
-      const position = rect.bottom + margin
-      const overflowed = position + containerRect.height > innerHeight
-      const overflowPosition = innerHeight - containerRect.height
-      const overflow = { position: overflowPosition, center: (rect.top + (rect.height / 2)) - overflowPosition }
-      return { position, overflowed, overflow, origin: '0%', ...attrs.y, reverse: 'top', side: attrs.x } as const
-    },
-    top: () => {
-      const position = rect.top - margin - containerRect.height
-      const overflowed = position < 0
-      const overflow = { position: 0, center: rect.top + (rect.height / 2) }
-      return { position, overflowed, overflow, origin: '100%', ...attrs.y, reverse: 'bottom', side: attrs.x } as const
-    },
-    left: () => {
-      const position = rect.left - margin - containerRect.width
-      const overflowed = position < 0
-      const overflow = { position: 0, center: rect.left + (rect.width / 2) }
-      return { position, overflowed, overflow, origin: '100%', ...attrs.x, reverse: 'right', side: attrs.y } as const
-    },
-    right: () => {
-      const position = rect.right + margin
-      const overflowed = position + containerRect.width > innerWidth
-      const overflowPosition = innerWidth - containerRect.width
-      const overflow = { position: overflowPosition, center: (rect.left + (rect.width / 2)) - overflowPosition }
-      return { position, overflowed, overflow, origin: '0%', ...attrs.x, reverse: 'left', side: attrs.y } as const
-    }
+  const a = axis[placement]
+  const { main, side, sign } = a
+  const mainSize = size[main]
+  const sideSize = size[side]
+  const mainViewport = viewport[main]
+  const sideViewport = viewport[side]
+  const mainStart = rect[main]
+  const mainEnd = rect[main === 'x' ? 'right' : 'bottom']
+  const mainLength = rect[main === 'x' ? 'width' : 'height']
+  const sideStart = rect[side]
+  const sideLength = rect[side === 'x' ? 'width' : 'height']
+  const config = { left: 0, top: 0, origin: ['50%', '50%'] }
+  // 主轴：计算首选方向
+  const position = sign > 0 ? mainEnd + margin : mainStart - margin - mainSize
+  const overflow = sign > 0 ? position + mainSize > mainViewport : position < 0
+  // 主轴反向
+  const reversePosition = sign > 0 ? mainStart - margin - mainSize : mainEnd + margin
+  const reverseOverflow = sign > 0 ? reversePosition < 0 : reversePosition + mainSize > mainViewport
+  const mainInset = main === 'x' ? 'left' : 'top'
+  const sideInset = side === 'x' ? 'left' : 'top'
+  const mainOrigin = main === 'x' ? 0 : 1
+  const sideOrigin = side === 'x' ? 0 : 1
+  // 主轴 origin：靠近 anchor 的一侧
+  const origin = sign > 0 ? '0%' : '100%'
+  if (!overflow) {
+    config[mainInset] = position
+    config.origin[mainOrigin] = origin
+  } else if (!reverseOverflow) {
+    config[mainInset] = reversePosition
+    config.origin[mainOrigin] = sign > 0 ? '100%' : '0%'
+  } else {
+    // 两侧都放不下：限制在 viewport 内
+    const edge = Math.max(0, mainViewport - mainSize)
+    config[mainInset] = edge
+    config.origin[mainOrigin] = `${mainStart + mainLength / 2 - edge}px`
   }
-  const option = calls[placement]()
-  config[option.inset] = option.position
-  config.origin[option.originKey] = option.origin
-  if (option.overflowed) {
-    const option2 = calls[option.reverse]()
-    if (!option2.overflowed) {
-      config[option2.inset] = option2.position
-      config.origin[option2.originKey] = option2.origin
-    } else {
-      config[option.inset] = option.overflow.position
-      config.origin[option.originKey] = `${option.overflow.center}px`
-    }
+  // 副轴：默认居中
+  let sidePosition = sideStart + sideLength / 2 - sideSize / 2
+  let sideOriginValue = '50%'
+  // 超出前侧
+  if (sidePosition < 0) {
+    sidePosition = 0
+    sideOriginValue = `${sideStart + sideLength / 2}px`
   }
-  config[option.side.inset] = option.side.selfSide.center
-  config.origin[option.side.originKey] = '50%'
-  if (config[option.side.inset] < option.side.selfSide.min) {
-    config[option.side.inset] = option.side.selfSide.min
-    config.origin[option.side.originKey] = `${option.side.selfSide.offset}px`
+  // 超出后侧
+  if (sidePosition + sideSize > sideViewport) {
+    sidePosition = sideViewport - sideSize
+    sideOriginValue = `${sideStart + sideLength / 2 - sidePosition}px`
   }
-  if (config[option.side.inset] + option.side.selfSide.containerSize > option.side.selfSide.max) {
-    config[option.side.inset] = option.side.selfSide.max - option.side.selfSide.containerSize
-    config.origin[option.side.originKey] = `${option.side.selfSide.offset - config[option.side.inset]}px`
-  }
+  config[sideInset] = sidePosition
+  config.origin[sideOrigin] = sideOriginValue
   container.style.left = `${config.left}px`
   container.style.top = `${config.top}px`
   container.style.transformOrigin = config.origin.join(' ')
@@ -118,6 +116,7 @@ export class Popup {
     this.resizer.run()
     this.container.onpointerdown = (e) => e.stopPropagation()
     this.popover.onpointerdown = this.popover.onclose = this.closeCallback
+    this.root.dispatchEvent(new CustomEvent('s-top-layer-open', { bubbles: true }))
     if (animete) await this.container.animate({ opacity: [0, 1], transform: ['scale(.8)', 'scale(1)'] }, animete).finished
   }
   async close() {
@@ -125,6 +124,7 @@ export class Popup {
     this.resizer.stop()
     window.removeEventListener('resize', this.closeCallback!)
     this.onClose?.()
+    this.root.dispatchEvent(new CustomEvent('s-top-layer-close', { bubbles: true }))
     if (this.animete) await this.container.animate({ opacity: [1, 0], transform: ['scale(1)', 'scale(.8)'] }, this.animete).finished
     if (this.popover instanceof HTMLDialogElement) this.popover.close()
     if (!(this.popover instanceof HTMLDialogElement) && this.popover.hidePopover) this.popover.hidePopover()

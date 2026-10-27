@@ -4,31 +4,31 @@
 
 ```html preview
 <s-fab>
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="secondary">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="tertiary">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="tonal-primary">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="tonal-secondary">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="tonal-tertiary">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="surface">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 ```
 
@@ -36,10 +36,10 @@
 
 ```html preview
 <s-fab>
-  <s-loading></s-loading> <!-- [!code highlight] -->
+  <s-loading></s-loading>
 </s-fab>
 <s-fab>
-  <s-spinner indeterminate></s-spinner> <!-- [!code highlight] -->
+  <s-spinner indeterminate></s-spinner> 
 </s-fab>
 ```
 
@@ -48,32 +48,32 @@
 设置 `disbled` 属性禁用按钮
 
 ```html preview
-<s-fab disabled> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="secondary" disabled> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab variant="secondary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="tertiary" disabled> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab variant="tertiary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="tonal-primary" disabled> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab variant="tonal-primary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="tonal-secondary" disabled> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab variant="tonal-secondary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="tonal-tertiary" disabled> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab variant="tonal-tertiary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="surface" disabled> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab variant="surface" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 ```
 
@@ -89,7 +89,7 @@
 </script>
 <template>
   <s-fab :hidden="visible">
-    <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon name="home"></ms-icon>
   </s-fab>
   <s-button @click="visible=!visible">切换</s-button>
 </template>
@@ -101,15 +101,15 @@
 
 ```html preview
 <s-fab>
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab size="medium"> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab size="medium">
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab size="large"> <!-- [!code highlight] -->
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+<s-fab size="large">
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 ```
 
@@ -119,21 +119,21 @@
 
 ```html preview
 <s-fab>
-  <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon slot="start" name="home"></ms-icon>
   提交信息
-  <svg viewBox="0 -960 960 960" slot="end"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon slot="end" name="star"></ms-icon>
 </s-fab>
 
 <s-fab size="medium" variant="secondary">
-  <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon slot="start" name="home"></ms-icon>
   提交信息
-  <svg viewBox="0 -960 960 960" slot="end"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon slot="end" name="star"></ms-icon>
 </s-fab>
 
 <s-fab size="large" variant="tertiary">
-  <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon slot="start" name="home"></ms-icon>
   提交信息
-  <svg viewBox="0 -960 960 960" slot="end"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon slot="end" name="star"></ms-icon>
 </s-fab>
 ```
 

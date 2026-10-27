@@ -5,7 +5,7 @@
 ```html preview
 <s-split-button>
   <s-split-button-trigger>
-    <svg viewBox="0 -960 960 960" slot="icon"><path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"></path></svg>
+    <ms-icon slot="icon" name="arrow_downward"></ms-icon>
     <s-tooltip>Tooltip</s-tooltip>
   </s-split-button-trigger>
 </s-split-button>

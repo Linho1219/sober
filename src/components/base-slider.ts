@@ -1,6 +1,7 @@
-import { useElement, useProps, useThrottle, device } from '../core/elements.js'
+import { useElement, useProps, useThrottle } from '../core/elements.js'
 import * as scheme from '../core/scheme.js'
 import { useComputedStyle } from '../core/utils/CSS.js'
+import { addHoverEvent } from '../core/utils/events/hover.js'
 
 const props = useProps({
   $start: 0,
@@ -144,8 +145,8 @@ const style = /*css*/`
 :host([end-pressed]) .thumb-end{
   cursor: grabbing;
 }
-:host(:is([start-hover], [start-pressed])) .thumb-start::before,
-:host(:is([end-hover], [end-pressed])) .thumb-end::before{
+:host(:where([start-hover], [start-pressed])) .thumb-start::before,
+:host(:where([end-hover], [end-pressed])) .thumb-end::before{
   opacity: 1;
   transform: scale(1);
 }
@@ -472,18 +473,16 @@ export class BaseSlider extends useElement({
     thumbStart.onpointerdown = down
     thumbEnd.onpointerdown = down
     const hovering = (event: PointerEvent) => {
-      if (!device.mouseEnabled || event.pointerType !== 'mouse') return
       const name = event.currentTarget === thumbStart ? 'start' : 'end'
-      const enter = event.type === 'pointerenter'
-      this.toggleAttribute(`${name}-hover`, enter)
-      this.dispatchEvent(new CustomEvent(`hover${enter ? 'start' : 'end'}`, { detail: { name } }))
+      this.setAttribute(`${name}-hover`, '')
+      this.dispatchEvent(new CustomEvent(`hover-start`, { detail: { name } }))
+      return () => {
+        this.removeAttribute(`${name}-hover`)
+        this.dispatchEvent(new CustomEvent(`hover-end`, { detail: { name } }))
+      }
     }
-    thumbStart.onpointerenter = (e) => hovering(e)
-    thumbStart.onpointerleave = (e) => hovering(e)
-    thumbStart.onpointercancel = (e) => hovering(e)
-    thumbEnd.onpointerenter = (e) => hovering(e)
-    thumbEnd.onpointerleave = (e) => hovering(e)
-    thumbEnd.onpointercancel = (e) => hovering(e)
+    addHoverEvent(thumbStart, hovering)
+    addHoverEvent(thumbEnd, hovering)
     const keydown = (key: string) => onKeydown(this as never, key, steps)
     this.addEventListener('keydown', (e) => {
       if (!keydown(e.key)) return

@@ -16,15 +16,15 @@
 
 ## 自定义尺寸
 
-你可以通过 `strokeWidth` 和 `strokeGap` 来设置进度条的宽度和间距。
+你可以通过 `strokeSize` 和 `strokeGap` 来设置进度条的宽度和间距。
 
 ```html preview
-<s-spinner strokeWidth="6" strokeGap="4" style="width: 80px" value="80">80%</s-spinner>
-<s-spinner indeterminate strokeWidth="2" style="width: 80px"></s-spinner>
+<s-spinner strokeSize="6" strokeGap="4" style="width: 80px" value="80">80%</s-spinner>
+<s-spinner indeterminate strokeSize="2" style="width: 80px"></s-spinner>
 ```
 
-> 注意：该组件会始终保持缩放比例，所以 `strokeWidth` 和 `strokeGap` 的尺寸设置始终相对于原始尺寸(`40px`)。  
-> 例如：组件的宽高设置为 `80px`，那么 `strokeWidth=4`，实际上渲染为 `8px`。  
+> 注意：该组件会始终保持缩放比例，所以 `strokeSize` 和 `strokeGap` 的尺寸设置始终相对于原始尺寸(`40px`)。  
+> 例如：组件的宽高设置为 `80px`，那么 `strokeSize=4`，实际上渲染为 `8px`。  
 > 你总是可以使用 `值 * 40 / 宽度` 计算公式来定义绝对值。
 
 进度条会有过渡动画，如果你希望实时的变更进度，可以使用CSS `transition: none` 来禁用过渡。
@@ -44,7 +44,7 @@
 | indeterminate | `boolean` | `false` | √    | 未知的   |
 | max           | `number`  | `100`   | ×    | 最大值   |
 | value         | `number`  | `0`     | ×    | 当前值   |
-| strokeWidth   | `number`  | `4`     | ×    | 线条宽度 |
+| strokeSize    | `number`  | `4`     | ×    | 线条宽度 |
 | strokeGap     | `number`  | `4`     | ×    | 线条间距 |
 
 ## 样式变量

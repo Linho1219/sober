@@ -50,6 +50,7 @@ const props = useProps({
   indeterminate: false,
   $max: 100,
   $value: 0,
+  strokeGap: 4,
 })
 
 const style = /*css*/`
@@ -104,10 +105,6 @@ const style = /*css*/`
   right: 0;
   border-radius: 50%;
   background: currentColor;
-}
-:host([size=large]){
-  height: 8px;
-  border-radius: 4px;
 }
 :host([indeterminate]){
   .stop{

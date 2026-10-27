@@ -1,13 +1,11 @@
-import { useElement, useProps } from '../core/elements.js'
+import { useElement, useProps, getParentDepth } from '../core/elements.js'
 import { useComputedStyle } from '../core/utils/CSS.js'
 import * as scheme from '../core/scheme.js'
 
 const props = useProps({
-  gravity: ['center', 'top', 'bottom'],
+  placement: ['center', 'top', 'bottom'],
   size: ['standard', 'full-screen'],
-  opened: false,
-  attached: false,
-  $slotLayer: -1,
+  $parentDepth: -1,
 })
 
 type CloseSource = 0 | 1 | 2
@@ -22,16 +20,14 @@ const events = {
 const style = /*css*/`
 :host{
   display: contents;
-  position: absolute;
   width: 380px;
   height: min-content;
   max-width: calc(100% - 48px);
   max-height: calc(100% - 48px);
   cursor: default;
-  outline-offset: 24px;
   border-radius: 28px;
   white-space: normal;
-  font-size: .875rem;
+  font-size: calc(var(--s-font-size, 1) * 16px);
   transition-timing-function: ${scheme.motion.easing.standard};
   transition-duration: ${scheme.motion.duration.short4};
   background: ${scheme.color.surfaceContainerHigh};
@@ -61,60 +57,6 @@ const style = /*css*/`
   box-shadow: inherit;
   border-radius: inherit;
   padding: inherit;
-  &::backdrop{
-    filter: opacity(.75);
-    background: ${scheme.color.scrim};
-  }
-  &:open{
-    display: flex;
-  }
-  .layout{
-    flex-grow: 1;
-    height: -moz-available;
-    height: -webkit-fill-available;
-    border-radius: inherit;
-    display: flex;
-    flex-direction: column;
-    max-width: -moz-available;
-    max-width: -webkit-fill-available;
-    ::slotted(:is([slot=title], [slot=center-title])){
-      font-size: calc(var(--s-font-size, 1) * 24px);
-      font-weight: 600;
-      padding: 24px 24px 0;
-      line-height: 1.6;
-      flex-shrink: 0;
-    }
-    ::slotted([slot=text]){
-      cursor: text;
-      padding: 16px 24px;
-      line-height: 1.6;
-      word-break: break-all;
-      overflow: auto;
-      outline: none;
-      flex-grow: 1;
-    }
-    .actions{
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0px 14px;
-      flex-shrink: 0;
-      ::slotted([slot=action]){
-        min-width: 64px;
-        margin: 16px 2px;
-      }
-    }
-  }
-}
-:host([gravity=top]){
-  .popover{
-    margin-top: 0;
-  }
-}
-:host([gravity=bottom]){
-  .popover{
-    margin-bottom: 0;
-  }
 }
 `
 
@@ -144,86 +86,6 @@ export class Dialog extends useElement({
       const easing = computedStyle.getValue('transition-timing-function')
       const duration = computedStyle.getDuration('transition-duration')
       return { easing, duration }
-    }
-    const toClose = (source: number) => {
-      this.opened = false
-      this.dispatchEvent(new CustomEvent('close', { detail: { source } }))
-    }
-    const getGravity = () => {
-      const cssGravity = computedStyle.getValue('--s-dialog-gravity') as typeof this.gravity
-      return props.metadata.gravity.types?.includes(cssGravity) ? cssGravity : this.gravity
-    }
-    popover.onkeydown = (e) => {
-      if (e.key !== 'Escape') return
-      e.preventDefault()
-      toClose(Dialog.CLOSE_SOURCE_KEYBOARD)
-    }
-    popover.onmouseover = (e) => e.stopPropagation()
-    popover.onpointerdown = (e) => e.stopPropagation()
-    layout.onclick = (e) => {
-      e.stopPropagation()
-      //info.parentElement?.dispatchEvent(new PointerEvent('click', e))
-      //console.log('click', info.parentElement)
-    }
-    action.onclick = () => toClose(Dialog.CLOSE_SOURCE_ACTION)
-    popover.onclick = (e) => {
-      toClose(Dialog.CLOSE_SOURCE_SCRIM)
-      e.stopPropagation()
-    }
-    const open = async () => {
-      if (!info.isConnected || popover.open) return
-      popover.showModal()
-      popover.focus()
-      const offset = computedStyle.getValue('outline-offset')
-      const gravity = getGravity()
-      if (info.isConnected) {
-        const transforms = {
-          top: ['translateY(-100%)', 'translateY(0)'],
-          bottom: ['translateY(100%)', 'translateY(0)'],
-          center: ['scale(.9)', 'scale(1)']
-        }
-        const animateOptions = getAnimateOptions()
-        await Promise.all([
-          popover.animate({ transform: transforms[gravity], opacity: [0, 1] }, animateOptions).finished,
-          popover.animate({ opacity: [0, 1] }, { ...animateOptions, pseudoElement: '::backdrop' }).finished
-        ])
-      }
-    }
-    const close = async () => {
-      console.log('close')
-      if (!popover.open) return
-      if (info.isConnected) {
-        const animateOptions = getAnimateOptions()
-        await Promise.all([
-          popover.animate({ transform: ['scale(1)', 'scale(.9)'], opacity: [1, 0] }, animateOptions).finished,
-          popover.animate({ opacity: [1, 0] }, { ...animateOptions, pseudoElement: '::backdrop' }).finished
-        ])
-      }
-      popover.close()
-    }
-    const show = () => this.opened = true
-    const addEvent = () => {
-      if (!info.parentNode || !this.attached) return
-      let parentElement = info.parentNode
-      if (this.slotLayer >= 0 && this.assignedSlot) {
-        parentElement = this.assignedSlot
-        for (let i = 0; i < this.slotLayer; i++) parentElement = parentElement.parentElement!
-      }
-      const parent = (parentElement instanceof ShadowRoot ? parentElement.host : parentElement) as HTMLElement
-      if (!(parent instanceof HTMLElement)) return
-      parent.addEventListener('click', show)
-      info.parentNode = parent
-    }
-    const removeEvent = () => info.parentNode?.removeEventListener('click', show)
-    return {
-      onMounted: addEvent,
-      onUnmounted: removeEvent,
-      setSlotLayer: () => {
-        removeEvent()
-        addEvent()
-      },
-      attached: (v) => v ? addEvent() : removeEvent(),
-      opened: (v) => v ? open() : close()
     }
   }
 }) {

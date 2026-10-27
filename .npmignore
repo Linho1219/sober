@@ -1,4 +1,5 @@
 .vscode/
+.tighub/
 src/
 node_modules/
 .gitattributes

@@ -81,7 +81,7 @@ const style = /*css*/`
   }
 }
 svg,
-::slotted(:is(.icon, svg, s-icon, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, ms-icon)){
   flex-shrink: 0;
   height: 100%;
   width: auto;

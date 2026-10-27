@@ -1,4 +1,5 @@
 import { useProps, useElement } from '../core/elements.js'
+import { device } from '../core/utils/device.js'
 import * as scheme from '../core/scheme.js'
 
 const pathFrame = `M70.116 21.222Q79.49 3.421 89.708 20.801 95 33 106.35 26.91 126.364 17.641 122.888 37.233 120.781 51.453 132.684 52.085 154.172 55.982 140.268 70.202 128.576 80.419 140.373 89.162 153.824 104.333 133.792 107.341 119.772 109.239 123.204 122.237 125.416 142.777 106.034 132.981 93.943 127.373 89.074 140.221 79.472 156.044 69.87 138.868 64.73 127.102 52.841 133.402 33.67 141.829 36.935 122.026 39.674 108.754 27 108 5.335 103.066 20.398 89.057 30.615 79.787 20 71 6.599 57.246 23.769 53.243 40.833 51.769 37.041 37.127 34.723 17.219 54 27 65 34 70.116 21.328`
@@ -17,7 +18,7 @@ const tweenCurve = '0.5, 0.2, 0, 0.8'
 const smilKeyTimes = '0; 0.14; 0.29; 0.43; 0.57; 0.71; 0.86; 1'
 const smilSplines = Array(7).fill(tweenCurve).join(';')
 const smilPathValues = pathFrames.join(';')
-const support = CSS.supports('d', 'path("M0 0 L10 10")')
+const support = !device.isServer && CSS.supports('d', 'path("M0 0 L10 10")')
 
 const animeStyle = /*css*/`
 svg{

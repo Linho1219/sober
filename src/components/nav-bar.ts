@@ -129,7 +129,7 @@ const itemStyle = /*css*/`
 .icon{
   display: contents;
 }
-::slotted(:is(s-icon, svg)[slot=icon]){
+::slotted(:where(.icon, svg, s-icon, ms-icon)[slot=icon]){
   width: 24px;
   height: 24px;
   color: currentColor;

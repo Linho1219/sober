@@ -1,13 +1,13 @@
 # 按需引入
 
-随着 **Sober** 的更新，组件库可能会越来越大，如果你对大小非常敏感，我们强烈建议你定义对 **Sober** 的按需引入。
+随着 **Sober** 的更新，体积可能会越来越大，如果你对大小非常敏感，我们强烈建议你定义对 **Sober** 的按需引入。
 
-下面是一个例子，新建一个 **sober.js** 文件，编辑以下代码，按你的需要导入组件。
+下面是一个例子，新建一个 **sober.js** 文件，编辑以下示例代码。
 
 ```js
 //sober.js
-export * from 'sober/button'
-export * from 'sober/checkbox'
+export * from 'sober/button' //按钮
+export * from 'sober/checkbox' //复选框
 ```
 
 然后在你的入口文件中引入该文件进行注册组件。
@@ -17,50 +17,39 @@ export * from 'sober/checkbox'
 import './sober.js'
 ```
 
-完整的组件列表如下：
+完整的组件列表如下，可按照你的需要去导入：
 
-```js
-export * from 'sober/alert'
-export * from 'sober/app-bar'
-export * from 'sober/avatar'
-export * from 'sober/badge'
-export * from 'sober/base-slider'
-export * from 'sober/button'
-export * from 'sober/button-group'
-export * from 'sober/card'
-export * from 'sober/checkbox'
-export * from 'sober/chip'
-export * from 'sober/spinner'
-export * from 'sober/dialog'
-export * from 'sober/divider'
-export * from 'sober/docked-date-picker'
-export * from 'sober/docked-time-picker'
-export * from 'sober/drawer'
-export * from 'sober/empty'
-export * from 'sober/field-set'
-export * from 'sober/fab'
-export * from 'sober/icon'
-export * from 'sober/icon-button'
-export * from 'sober/loading'
-export * from 'sober/nav-bar'
-export * from 'sober/nav-rail'
-export * from 'sober/nav-adaptive'
-export * from 'sober/page'
-export * from 'sober/page-view'
-export * from 'sober/picker'
-export * from 'sober/progress'
-export * from 'sober/radio'
-export * from 'sober/rating'
-export * from 'sober/ripple'
-export * from 'sober/search'
-export * from 'sober/skeleton'
-export * from 'sober/slider'
-export * from 'sober/split-button'
-export * from 'sober/switch'
-export * from 'sober/tab'
-export * from 'sober/text-field'
-export * from 'sober/tooltip'
-```
+- [Alert](../components/alert.md) `sober/alert`
+- [AppBar](../components/appbar.md) `sober/appbar`
+- [Avatar](../components/avatar.md) `sober/avatar`
+- [Badge](../components/badge.md) `sober/badge`
+- [BaseSlider](../components/base-slider.md) `sober/base-slider`
+- [ButtonGroup](../components/button.md) `sober/button-group`
+- [Button](../components/button.md) `sober/button`
+- [Card](../components/card.md) `sober/card`
+- [Carousel](../components/carousel.md) `sober/carousel`
+- [Checkbox](../components/checkbox.md) `sober/checkbox`
+- [Chip](../components/chip.md) `sober/chip`
+- [ColorPicker](../components/color-picker.md) `sober/color-picker`
+- [DatePicker](../components/date-picker.md) `sober/date-picker`
+- [Dialog](../components/dialog.md) `sober/dialog`
+- [Divider](../components/divider.md) `sober/divider`
+- [Drawer](../components/drawer.md) `sober/drawer`
+- [Empty](../components/empty.md) `sober/empty`
+- [FabMenu](../components/fab-menu.md) `sober/fab-menu`
+- [Fab](../components/fab.md) `sober/fab`
+- [FieldSet](../components/field-set.md) `sober/field-set`
+- [IconButton](../components/icon-button.md) `sober/icon-button`
+- [Icon](../components/icon.md) `sober/icon`
+- [Loading](../components/loading.md) `sober/loading`
+- [Menu](../components/menu.md) `sober/menu`
+- [NavAdaptive](../components/nav-adaptive.md) `sober/nav-adaptive`
+- [NavBar](../components/nav-bar.md) `sober/nav-bar`
+- [NavRail](../components/nav-rail.md) `sober/nav-rail`
+- [PageView](../components/page-view.md) `sober/page-view`
+- [Page](../components/page.md) `sober/page`
+- [Pagination](../components/pagination.md) `sober/pagination`
+- [Picker](../components/picker.md) `sober/picker`
 
 ---
 

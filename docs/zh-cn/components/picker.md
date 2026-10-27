@@ -233,8 +233,8 @@
 | defaultValue           | `string`                         | `''`       | ×    | 默认选中值（仅表单重置时会设置，同 `value` 属性）                               |
 | multiple               | `boolean`                        | `false`    | √    | 多选的                                                                          |
 | selectable             | `boolean`                        | `true`     | √    | 可选中的，禁用该属性点击时不会再选中                                            |
-| items `只读`           | `TabItem[]`                      | `[]`       |      | 所有子项                                                                        |
-| selectedItems `只读`   | `TabItem[]`                      | `[]`       |      | 选中的子项                                                                      |
+| items `只读`           | `PickerItem[]`                   | `[]`       |      | 所有子项                                                                        |
+| selectedItems `只读`   | `PickerItem[]`                   | `[]`       |      | 选中的子项                                                                      |
 | selectedIndex `只读`   | `number`                         | `-1`       |      | 当前选中下标                                                                    |
 | selectedIndexes `只读` | `number[]`                       | `[]`       |      | 当前多选下标数组                                                                |
 

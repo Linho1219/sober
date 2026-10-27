@@ -1,6 +1,5 @@
 import { useElement, useProps } from '../core/elements.js'
 import * as scheme from '../core/scheme.js'
-import { useComputedStyle } from '../core/utils/CSS.js'
 import './ripple.js'
 
 const props = useProps({
@@ -26,7 +25,7 @@ const style = /*css*/`
   max-width: -webkit-fill-available;
   outline-color: currentColor;
   color: ${scheme.color.onSurfaceVariant};
-  transition-timing-function: ${scheme.motion.easing.standardAccelerate};
+  transition-timing-function: ${scheme.motion.easing.standardDecelerate};
   transition-duration: ${scheme.motion.duration.short4};
 }
 .layout{
@@ -113,13 +112,13 @@ const template = /*html*/`
       <circle class="fill" cx="10" cy="10" r="5" />
     </svg>
   </div>
-  <s-ripple class="ripple" part="ripple" parentDepth="1"></s-ripple>
+  <s-ripple class="ripple" part="ripple" parentDepth="1" syncParentStates></s-ripple>
 </div>
 <slot></slot>
 `
 
 export class Radio extends useElement({
-  states: ['focusable', 'pressable', 'hoverable', 'formable'],
+  states: ['focusable', 'formable'],
   style, template, props,
   setup(_, info) {
     const updateFrom = () => info.internals.setFormValue(this.disabled || !this.checked ? null : this.value)

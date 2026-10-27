@@ -45,13 +45,13 @@ const style = /*css*/`
 :host([variant=surface]){
   background: ${scheme.color.surfaceContainerHigh};
 }
-:host(:is([clickable], [type])){
+:host(:where([clickable], [type])){
   cursor: pointer;
   .ripple{
     display: block;
   }
 }
-:host(:is([type=checkbox], [type=radio])){
+:host(:where([type=checkbox], [type=radio])){
   &:host([checked]){
     background: ${scheme.color.secondaryContainer};
     color: ${scheme.color.onSecondaryContainer};
@@ -94,17 +94,17 @@ const style = /*css*/`
 }
 :host([disabled]){
   svg,
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     color: inherit;
   }
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
   width: 18px;
   height: 18px;
   font-size: 18px;
   color: ${scheme.color.primary};
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=close-icon]){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=close-icon]){
   color: currentColor;
 }
 ::slotted([slot=start]){

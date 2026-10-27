@@ -69,6 +69,12 @@ const style = /*css*/`
   --s-field-set-border-width: var(--s_picker-border-width);
   --s-field-set-border-width-focused: var(--s_picker-border-width-focused);
   --s-field-set-legend-gap: var(--s_picker-label-gap);
+  &[focused]{
+    svg,
+    ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+      color: var(--s_picker-border-color-focused);
+    }
+  }
 }
 .label{
   height: 100%;
@@ -105,10 +111,10 @@ const style = /*css*/`
   overflow: hidden;
 }
 svg{
-  width: 24px;
-  margin-right: calc(var(--s_picker-padding-right) - 10px);
-  margin-left: calc(var(--s_picker-padding-right) * -1);
-  fill: ${scheme.color.onSurfaceVariant};
+  width: 20px;
+  margin-right: calc(var(--s_picker-padding-right) - 6px);
+  margin-left: calc((var(--s_picker-padding-right) - 4px) * -1);
+  color: var(--s_picker-border-color);
 }
 .popover{
   display: none;
@@ -183,18 +189,18 @@ input{
     outline: none;
   }
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
   width: 20px;
   height: 20px;
   font-size: 20px;
   align-self: center;
   color: ${scheme.color.onSurfaceVariant};
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=start]){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=start]){
   margin-left: 12px;
   margin-right: -6px;
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=end]){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=end]){
   margin-left: -6px;
   margin-right: 12px;
 }
@@ -225,8 +231,9 @@ input{
     margin-right: calc((var(--s_field-set-legend-right) + var(--s_field-set-border-top-left-radius)) * -1 + var(--s_field-set-padding-right));
     transform: translateY(0);
   }
-  svg{
-    fill: currentColor;
+  svg,
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+    color: currentColor;
   }
 }
 `
@@ -263,7 +270,7 @@ const itemStyle = /*css*/`
   border-radius: 0;
   line-height: 1;
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
   width: 20px;
   height: 20px;
   font-size: 20px;
@@ -281,7 +288,7 @@ const template = /*html*/`
     <div class="text" part="text"></div>
   </div>
   <slot name="end" slot="end">
-    <svg viewBox="0 -960 960 960"><path d="M480-360 280-560h400L480-360Z"></path></svg>
+    <svg viewBox="0 -960 960 960"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"></path></svg>
   </slot>
   <s-ripple class="ripple" part="ripple"></s-ripple>
 </s-field-set>
@@ -346,6 +353,7 @@ export class Picker extends useElement({
     this.addEventListener('click', () => {
       if (popover.open) return
       fieldSet.focused = true
+      this.setAttribute('open', '')
       popup.onUpdate = () => {
         container.style.minWidth = `${this.offsetWidth}px`
         if (['left', 'right'].includes(this.placement)) container.style.removeProperty('min-width')
@@ -354,7 +362,10 @@ export class Picker extends useElement({
         if (this.multiple) return
         popup.close()
       }
-      popup.onClose = () => fieldSet.focused = false
+      popup.onClose = () => {
+        fieldSet.focused = false
+        this.removeAttribute('open')
+      }
       popup.open(this, this.placement, computedStyle.getNumber('gap'), getAnimateOptions())
     })
     return {
@@ -382,7 +393,7 @@ export class Picker extends useElement({
       searchable: () => {
         search.value = ''
         onSearch()
-      },
+      }
     }
   }
 }) { }
@@ -392,7 +403,7 @@ export class PickerItem extends useElement({
   props: itemProps,
   template: itemTemplate,
   states: ['focusable'],
-  setup(shadowRoot) {
+  setup() {
     this.addEventListener('click', () => this.dispatchEvent(new Event(`${name}:change`, { bubbles: true })))
     return {
       text: () => this.dispatchEvent(new Event(`${name}:text-changed`, { bubbles: true })),

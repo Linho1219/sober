@@ -4,7 +4,7 @@
 
 ```html preview
 <s-icon-button> 
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button>
@@ -31,18 +31,18 @@
 
 ```html preview
 <s-icon-button> 
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 <s-icon-button variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button variant="tonal"> 
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button variant="outlined">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 ```
 
@@ -52,19 +52,19 @@
 
 ```html preview
 <s-icon-button disabled> 
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button disabled variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button disabled variant="tonal"> 
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button disabled variant="outlined">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 ```
 
@@ -74,29 +74,29 @@
 
 ```html preview
 <s-icon-button type="checkbox">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 <s-icon-button type="checkbox" variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 <s-icon-button type="checkbox" variant="tonal">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 <s-icon-button type="checkbox" variant="outlined">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 <hr>
 <s-icon-button type="radio" name="select">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 <s-icon-button type="radio" name="select" variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 <s-icon-button type="radio" name="select" variant="tonal">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 <s-icon-button type="radio" name="select" variant="outlined">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 ```
 
@@ -106,23 +106,23 @@
 
 ```html preview
 <s-icon-button size="extra-small" variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button size="small" variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button size="medium" variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button size="large" variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button size="extra-large" variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 ```
 
@@ -132,15 +132,15 @@
 
 ```html preview
 <s-icon-button variant="filled" width="wide">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button variant="tonal"> 
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button>
 
 <s-icon-button variant="outlined" width="narrow">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
 </s-icon-button><br>
 ```
 
@@ -150,17 +150,17 @@
 
 ```html preview
 <s-icon-button variant="filled">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
   <s-badge></s-badge>
 </s-icon-button>
 
 <s-icon-button variant="tonal"> 
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
   <s-badge>6</s-badge>
 </s-icon-button>
 
 <s-icon-button variant="outlined">
-  <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+  <ms-icon name="home"></ms-icon>
   <s-badge>99</s-badge>
 </s-icon-button>
 ```
@@ -173,13 +173,13 @@
 <form action="http://coolaf.com/tool/params" method="get">
   选择标签：
   <s-icon-button name="tag" type="checkbox" value="star">
-    <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon name="home"></ms-icon>
   </s-icon-button>
   <s-icon-button name="tag" type="checkbox" value="home">
-    <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon name="home"></ms-icon>
   </s-icon-button>
   <s-icon-button name="tag" type="checkbox" value="favorite" defaultChecked checked>
-    <svg viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg> 
+    <ms-icon name="home"></ms-icon> 
   </s-icon-button>
   <hr>
   <s-button type="reset" variant="outlined"> 重置表单 </s-button>

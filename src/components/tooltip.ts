@@ -1,6 +1,8 @@
-import { useElement, useProps, getParentDepth, device } from '../core/elements.js'
+import { useElement, useProps, getParentDepth } from '../core/elements.js'
 import { useComputedStyle } from '../core/utils/CSS.js'
 import { Popup } from '../core/utils/popup.js'
+import { device } from '../core/utils/device.js'
+import { addLongPressOrEnterEvent } from '../core/utils/events/long-press-or-enter.js'
 import * as scheme from '../core/scheme.js'
 
 const props = useProps({
@@ -71,54 +73,27 @@ export class Tooltip extends useElement({
       const duration = computedStyle.getDuration('transition-duration')
       return { easing, duration }
     }
-    const hover = (e: PointerEvent) => {
-      if (!this.isConnected || !info.parentNode || popover.classList.contains('open') || computedStyle.getValue('display') === 'none') return
+    const hover = () => {
+      if (!this.isConnected || popover.classList.contains('open') || computedStyle.getValue('display') === 'none') return
       const cssPlacement = computedStyle.getVariable('--s-tooltip-placement', this.placement, props.metadata.placement.types)
       const placement = cssPlacement === 'auto' ? device.touchEnabled ? 'top' : 'bottom' : cssPlacement
       const parentNode = info.parentNode!
-      const call = () => popup.open(parentNode, placement, computedStyle.getNumber('outline-offset'), getAnimateOptions())
-      const close = () => popup.close()
-      if (e.pointerType === 'mouse' && device.mouseEnabled) {
-        popup.onClose = () => {
-          parentNode.removeEventListener('pointerleave', close)
-          document.removeEventListener('wheel', close)
-        }
-        parentNode.addEventListener('pointerleave', close)
-        document.addEventListener('wheel', close)
-        call()
-        return
-      }
-      //touch
-      const timer = setTimeout(() => {
-        popup.onClose = () => {
-          document.removeEventListener('pointerup', close)
-          document.removeEventListener('pointercancel', close)
-        }
-        document.addEventListener('pointerup', close)
-        document.addEventListener('pointercancel', close)
-        call()
-        cancel()
-      }, 500)
-      const cancel = () => {
-        clearTimeout(timer)
-        parentNode.removeEventListener('pointercancel', cancel)
-        parentNode.removeEventListener('pointerleave', cancel)
-      }
-      parentNode.addEventListener('pointerleave', cancel)
-      parentNode.addEventListener('pointercancel', cancel)
+      const margin = computedStyle.getNumber('outline-offset')
+      popup.open(parentNode, placement, margin, getAnimateOptions())
+      return () => popup.close()
     }
+    let removeEvent: (() => void) | undefined
     const addEvent = () => {
       if (!info.parentNode) return
       let parent = getParentDepth(this) || info.parentNode
-      parent.addEventListener('pointerenter', hover)
+      removeEvent = addLongPressOrEnterEvent(parent, hover, 500)
       info.parentNode = parent
     }
-    const removeEvent = () => info.parentNode?.removeEventListener('pointerenter', hover)
     return {
       onMounted: addEvent,
       onUnmounted: removeEvent,
       parentDepth: () => {
-        removeEvent()
+        removeEvent?.()
         addEvent()
       }
     }

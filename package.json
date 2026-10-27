@@ -1,6 +1,6 @@
 {
   "name": "sober",
-  "version": "2.0.0-alpha.20",
+  "version": "2.0.0-alpha.21",
   "description": "Sober is a library of UI components designed with reference to Material You.",
   "type": "module",
   "scripts": {
@@ -8,6 +8,7 @@
     "build": "node dev/build.js",
     "check": "npx tsc --noEmit",
     "test": "node dev/test.js",
+    "test:ssr": "node dev/test-ssr.js",
     "update": "pnpm update",
     "publish:alpha": "npm publish --tag alpha"
   },
@@ -57,17 +58,11 @@
       "url": "https://ifdian.net/a/apprat"
     }
   ],
-  "sponsorsx": [
-    "https://mangotool.cn",
-    "https://waterx.top",
-    "https://www.qiaoxh.com",
-    "https://uoice.com"
-  ],
   "sponsors": [
     {
       "name": "LeapStella",
       "logo": "mangotool.png",
-      "url": "leapstella.com"
+      "url": "https://leapstella.com"
     },
     {
       "name": "WaterPage",

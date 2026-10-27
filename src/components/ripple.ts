@@ -1,13 +1,15 @@
-import { useElement, useProps, getParentDepth, device } from '../core/elements.js'
+import { useElement, useProps, getParentDepth } from '../core/elements.js'
 import { useComputedStyle } from '../core/utils/CSS.js'
-import { oneEvent } from '../core/utils/one-event.js'
+import { addDownEvent } from '../core/utils/events/down.js'
+import { addHoverEvent } from '../core/utils/events/hover.js'
 import * as scheme from '../core/scheme.js'
 
 const props = useProps({
   disabled: false,
   disabledHover: false,
+  syncParentStates: false,
   $parentDepth: -1,
-  $delay: 0
+  $delay: 0,
 })
 
 const events = {
@@ -37,19 +39,23 @@ const style = /*css*/`
   animation-timing-function: inherit;
   animation-duration: inherit;
 }
-.container:is(.hover, .pressed) .mask{
+.container{
+  color: var(--s-ripple-color, currentColor);
+}
+.container:where(.hover, .pressed) .mask{
   opacity: var(--s-ripple-hover-opacity, .1);
 }
 .mask{
   opacity: 0;
   transition-property: opacity;
-  background: var(--s-ripple-color, currentColor);
+  background: currentColor;
 }
 .ripple{
   opacity: 0;
   border-radius: 50%;
-  background: var(--s-ripple-color, currentColor);
+  background: currentColor;
   filter: opacity(var(--s-ripple-opacity, .24));
+  box-shadow: var(--s-ripple-shadow, none);
 }
 @media (prefers-reduced-motion: reduce) {
   :host{
@@ -88,6 +94,7 @@ const startRipple = (options: {
     newRipple = options.ripple.cloneNode() as HTMLDivElement
     options.container.appendChild(newRipple)
   }
+  options.root.dispatchEvent(new Event('open'))
   const animation = newRipple.animate({
     opacity: [1, 1],
     width: [`${size}px`, `${size}px`],
@@ -121,61 +128,41 @@ export class Ripple extends useElement({
       const duration = computedStyle.getDuration('animation-duration')
       return { easing, duration }
     }
-    const start = (event: PointerEvent) => {
-      if (computedStyle.getValue('display') === 'none') return
-      const disabled = computedStyle.getVariable('--s-ripple-disabled', this.disabled)
-      if (disabled) return
-      const run = (event: PointerEvent) => startRipple({ root: this, ripple, container, event, animateOptions: getAnimateOptions() })
-      if (event.pointerType === 'mouse') return oneEvent([{ element: document, events: ['pointerup', 'pointercancel'] }], run(event))
-      const delay = computedStyle.getVariable('--s-ripple-delay', this.delay)
-      if (delay <= 0) return oneEvent([{ element: document, events: ['touchcancel', 'touchend'] }], run(event))
-      let stop: Function | null = null
-      const timer = setTimeout(() => stop = run(event), delay)
-      const cancel = (e: TouchEvent) => {
-        clearTimeout(timer)
-        stop && stop()
-        if (e.type === 'touchmove') return
-        !stop && run(event)()
-      }
-      oneEvent([{ element: document, events: ['touchcancel', 'touchmove', 'touchend'] }], cancel)
-    }
-    const hovering = (event: PointerEvent) => {
-      if (!device.mouseEnabled || event.pointerType !== 'mouse') return
-      const force = event.type === 'pointerenter'
-      info.parentNode?.toggleAttribute('hover', force)
-      if (computedStyle.getValue('display') === 'none') return
-      const disabled = computedStyle.getVariable('--s-ripple-disabled-hover', this.disabledHover)
-      !disabled && container.classList.toggle('hover', force)
-    }
-    const down = (event: PointerEvent) => {
-      if (!info.parentNode || event.button !== 0) return
-      info.parentNode?.setAttribute('pressed', '')
+    const down = (e: PointerEvent) => {
+      if (!info.parentNode) return
+      if (computedStyle.getValue('display') === 'none' || computedStyle.getVariable('--s-ripple-disabled', this.disabled)) return
+      const syncParentStates = computedStyle.getVariable('--s-ripple-sync-parent-states', this.syncParentStates)
+      syncParentStates && info.parentNode.setAttribute('pressed', '')
       container.classList.add('pressed')
-      const remove = () => {
-        info.parentNode?.removeAttribute('pressed')
+      const stop = startRipple({ root: this, ripple, container, event: e, animateOptions: getAnimateOptions() })
+      return () => {
+        stop()
+        syncParentStates && info.parentNode?.removeAttribute('pressed')
         container.classList.remove('pressed')
-        document.removeEventListener('pointerup', remove)
-        document.removeEventListener('pointercancel', remove)
       }
-      document.addEventListener('pointerup', remove)
-      document.addEventListener('pointercancel', remove)
-      if (event.pointerType === 'mouse' && !device.mouseEnabled) return
-      start(event)
     }
+    const hover = () => {
+      if (computedStyle.getValue('display') === 'none') return
+      const syncParentStates = computedStyle.getVariable('--s-ripple-sync-parent-states', this.syncParentStates)
+      const disabledHover = computedStyle.getVariable('--s-ripple-disabled-hover', this.disabledHover)
+      syncParentStates && info.parentNode?.setAttribute('hover', '')
+      !disabledHover && container.classList.add('hover')
+      return () => {
+        syncParentStates && info.parentNode?.removeAttribute('hover')
+        container.classList.remove('hover')
+      }
+    }
+    const eventListener: { hover?: () => void, down?: () => void } = {}
     const addEvent = () => {
       if (!info.parentNode) return
       let parent = getParentDepth(this) || info.parentNode
-      parent.addEventListener('pointerenter', hovering)
-      parent.addEventListener('pointerleave', hovering)
-      parent.addEventListener('pointercancel', hovering)
-      parent.addEventListener('pointerdown', down)
+      eventListener.down = addDownEvent(parent, down)
+      eventListener.hover = addHoverEvent(parent, hover)
       info.parentNode = parent
     }
     const removeEvent = () => {
-      info.parentNode?.removeEventListener('pointerenter', hovering)
-      info.parentNode?.removeEventListener('pointerleave', hovering)
-      info.parentNode?.removeEventListener('pointercancel', hovering)
-      info.parentNode?.removeEventListener('pointerdown', down)
+      eventListener.hover?.()
+      eventListener.down?.()
     }
     return {
       onMounted: addEvent,

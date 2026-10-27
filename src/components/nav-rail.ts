@@ -40,7 +40,7 @@ const style = /*css*/`
   padding: 8px 0;
   min-height: 100%;
 }
-::slotted(:is(label, s-divider, s-nav-rail-item)){
+::slotted(:where(label, s-divider, s-nav-rail-item)){
   align-self: stretch;
 }
 ::slotted(label){
@@ -199,7 +199,7 @@ const itemStyle = /*css*/`
   overflow: hidden;
   contain: layout;
 }
-::slotted(:is(s-icon, svg)){
+::slotted(:where(.icon, svg, s-icon, ms-icon)){
   width: 24px;
   height: 24px;
   color: currentColor;
@@ -217,10 +217,10 @@ const itemStyle = /*css*/`
   position: relative;
   order: 1;
 }
-::slotted(:is(s-checkbox, s-radio)[slot=action]){
+::slotted(:where(s-checkbox, s-radio)[slot=action]){
   margin: 0 -8px 0 -4px;
 }
-::slotted(:is(s-icon, svg)[slot=toggle-icon]){
+::slotted(:where(.icon, svg, s-icon, ms-icon)[slot=toggle-icon]){
   transition-duration: inherit;
   transition-timing-function: inherit;
 }
@@ -248,7 +248,7 @@ const itemStyle = /*css*/`
 }
 :host([open]){
   .toggle-icon svg,
-  ::slotted(:is(s-icon, svg)[slot=toggle-icon]){
+  ::slotted(:where(.icon, svg, s-icon, ms-icon)[slot=toggle-icon]){
     transform: rotate(-180deg);
   }
   .has-sub-rail .sub-rail{

@@ -18,7 +18,7 @@ const style = /*css*/`
   color: ${scheme.color.onTertiary};
   background: ${scheme.color.tertiary};
 }
-::slotted(:is(svg, s-icon)){
+::slotted(:where(svg, s-icon)){
   color: currentColor;
   fill: currentColor;
   width: 24px;
@@ -35,7 +35,7 @@ const style = /*css*/`
   color: ${scheme.color.onSuccess};
   background: ${scheme.color.success};
 }
-::slotted(:is(img, object)){
+::slotted(:where(img, object)){
   width: 100%;
   height: 100%;
   border-radius: inherit;

@@ -51,10 +51,10 @@ const style = /*css*/`
 ::slotted([slot=nav]:first-child){
   margin-left: -8px;
 }
-::slotted(:not(:is([slot=title], [slot=subtitle])):last-child){
+::slotted(:not(:where([slot=title], [slot=subtitle])):last-child){
   margin-right: -12px;
 }
-::slotted(:is([slot=nav], [slot=logo])){
+::slotted(:where([slot=nav], [slot=logo])){
   margin-right: 4px;
   flex-shrink: 0;
 }
@@ -64,7 +64,7 @@ const style = /*css*/`
   fill: currentColor;
   flex-shrink: 0;
 }
-::slotted(:is([slot=title], [slot=subtitle])){
+::slotted(:where([slot=title], [slot=subtitle])){
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 100%;

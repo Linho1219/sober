@@ -1,30 +1,34 @@
-# FloatingActionButton
+# Fab
 
-The Floating Action Button (FAB) assists users in performing primary actions.
+A Floating Action Button (FAB) helps users take the primary action.
 
 ```html preview
 <s-fab>
-  <s-icon name="add"></s-icon>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="secondary">
-  <s-icon name="add"></s-icon>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="tertiary">
-  <s-icon name="add"></s-icon>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="tonal-primary">
-  <s-icon name="add"></s-icon>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="tonal-secondary">
-  <s-icon name="add"></s-icon>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
 <s-fab variant="tonal-tertiary">
-  <s-icon name="add"></s-icon>
+  <ms-icon name="home"></ms-icon>
+</s-fab>
+
+<s-fab variant="surface">
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 ```
 
@@ -32,46 +36,50 @@ Use other components as slots.
 
 ```html preview
 <s-fab>
-  <s-loading></s-loading> <!-- [!code highlight] -->
+  <s-loading></s-loading>
 </s-fab>
 <s-fab>
-  <s-spinner indeterminate></s-spinner> <!-- [!code highlight] -->
+  <s-spinner indeterminate></s-spinner> 
 </s-fab>
 ```
 
-## Disable
+## Disabled
 
-Set the `disabled` attribute to disable the button
+Set the `disbled` attribute to disable the button.
 
 ```html preview
-<s-fab disabled> <!-- [!code highlight] -->
-  <s-icon name="add"></s-icon>
+<s-fab disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="secondary" disabled> <!-- [!code highlight] -->
-  <s-icon name="add"></s-icon>
+<s-fab variant="secondary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="tertiary" disabled> <!-- [!code highlight] -->
-  <s-icon name="add"></s-icon>
+<s-fab variant="tertiary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="tonal-primary" disabled> <!-- [!code highlight] -->
-  <s-icon name="add"></s-icon>
+<s-fab variant="tonal-primary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="tonal-secondary" disabled> <!-- [!code highlight] -->
-  <s-icon name="add"></s-icon>
+<s-fab variant="tonal-secondary" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab variant="tonal-tertiary" disabled> <!-- [!code highlight] -->
-  <s-icon name="add"></s-icon>
+<s-fab variant="tonal-tertiary" disabled>
+  <ms-icon name="home"></ms-icon>
+</s-fab>
+
+<s-fab variant="surface" disabled>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 ```
 
 ## Hidden
 
-Set the `hidden` attribute to hide
+Set the `hidden` attribute to hide the button.
 
 ```vue preview
 <script setup>
@@ -81,86 +89,84 @@ Set the `hidden` attribute to hide
 </script>
 <template>
   <s-fab :hidden="visible">
-    <s-icon name="add"></s-icon>
+    <ms-icon name="home"></ms-icon>
   </s-fab>
-  <s-button @click="visible=!visible">Toggle</s-button>
+  <s-button @click="visible=!visible">切换</s-button>
 </template>
 ```
 
-## Dimensions
+## Size
 
-Set the `size` property to change the button size.
+Set the `size` attribute to change the button size.
 
 ```html preview
 <s-fab>
-  <s-icon name="add"></s-icon>
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab size="medium"> <!-- [!code highlight] -->
-  <s-icon name="add"></s-icon>
+<s-fab size="medium">
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 
-<s-fab size="large"> <!-- [!code highlight] -->
-  <s-icon name="add"></s-icon>
+<s-fab size="large">
+  <ms-icon name="home"></ms-icon>
 </s-fab>
 ```
 
-## Extension
+## Extended
 
-Additional content can be added using text and `start` and `end` slots.
+You can add content using text and the `start` and `end` slots.
 
 ```html preview
 <s-fab>
-  <s-icon name="add" slot="start"></s-icon> <!-- [!code highlight] -->
-commit message
-  <s-icon name="done" slot="end"></s-icon> <!-- [!code highlight] -->
+  <ms-icon slot="start" name="home"></ms-icon>
+  提交信息
+  <ms-icon slot="end" name="star"></ms-icon>
 </s-fab>
 
 <s-fab size="medium" variant="secondary">
-  <s-icon name="add" slot="start"></s-icon> <!-- [!code highlight] -->
-commit message
-  <s-icon name="done" slot="end"></s-icon> <!-- [!code highlight] -->
+  <ms-icon slot="start" name="home"></ms-icon>
+  提交信息
+  <ms-icon slot="end" name="star"></ms-icon>
 </s-fab>
 
 <s-fab size="large" variant="tertiary">
-  <s-icon name="add" slot="start"></s-icon> <!-- [!code highlight] -->
-commit message
-  <s-icon name="done" slot="end"></s-icon> <!-- [!code highlight] -->
+  <ms-icon slot="start" name="home"></ms-icon>
+  提交信息
+  <ms-icon slot="end" name="star"></ms-icon>
 </s-fab>
 ```
 
----
+## Properties
 
-## Attributes
+| Name     | Type                                                                                                | Default   | Sync | Description |
+| -------- | --------------------------------------------------------------------------------------------------- | --------- | ---- | ----------- |
+| variant  | `primary`, `secondary`, `tertiary`, `surface`, `tonal-primary`, `tonal-secondary`, `tonal-tertiary` | `primary` | √    | Variant     |
+| size     | `small`, `medium`, `large`                                                                          | `small`   | √    | Size        |
+| disabled | `boolean`                                                                                           | `false`   | √    | Disabled    |
+| hidden   | `boolean`                                                                                           | `false`   | √    | Hidden      |
 
-| Name     | Type                                                                         | Default | Sync | Description |
-| -------- | ---------------------------------------------------------------------------- | ------- | ---- | ----------- |
-| variant  | primary, secondary, tertiary, tonal-primary, tonal-secondary, tonal-tertiary | primary | √    | Variant     |
-| size     | small, medium, large                                                         | small   | √    | Size        |
-| disabled | boolean                                                                      | false   | √    | Disabled    |
-| hidden   | boolean                                                                      | false   | √    | Hidden      |
+## Slots
 
-## Slot
+| Name      | Description                                                                                          |
+| --------- | ---------------------------------------------------------------------------------------------------- |
+| Anonymous | Button text; supports text, `.icon`, `svg`, `s-icon`, `s-loading`, `s-spinner`, `ms-icon` by default |
+| start     | Start; supports the same content as Anonymous by default                                             |
+| end       | End; supports the same content as Anonymous by default                                               |
 
-| Name      | Description                                                  |
-| --------- | ------------------------------------------------------------ |
-| Anonymous | Button Text                                                  |
-| start     | Start, supports svg, s-icon, s-loading, s-spinner by default |
-| end       | End, supports svg, s-icon, s-loading, s-spinner by default   |
+## HTML Tag Attributes
 
-## HTML tag attributes
+| Name    | Description                      |
+| ------- | -------------------------------- |
+| pressed | Set when pressed                 |
+| hover   | Set on mouse hover               |
 
-| Name    | Description                    |
-| ------- | ------------------------------ |
-| pressed | Set when pressed               |
-| hover   | Set when the mouse hovers over |
+## Keyboard shortcuts
 
-## Keyboard Shortcuts
-
-Use the `Tab` key to switch focus, and use the `Space` or `Enter` key to trigger a click event.
+Use the `Tab` key to move focus; use `Space` or `Enter` to trigger the click event.
 
 ## Dependencies
 
-When this component is introduced, the following components will be automatically imported:
+This component automatically imports the following components when it is imported:
 
 - [Ripple](./ripple.md)

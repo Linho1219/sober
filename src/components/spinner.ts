@@ -1,4 +1,4 @@
-import { useProps, useElement, useThrottle, print } from '../core/elements.js'
+import { useProps, useElement, useThrottle } from '../core/elements.js'
 import * as scheme from '../core/scheme.js'
 import { bezier } from '../core/utils/bezier.js'
 
@@ -47,7 +47,7 @@ const props = useProps({
   indeterminate: false,
   $max: 100,
   $value: 0,
-  strokeWidth: 4,
+  strokeSize: 4,
   strokeGap: 4,
 })
 
@@ -157,7 +157,7 @@ export class Spinner extends useElement({
   style: [style, indeterminateStyle], props, template,
   setup(shadowRoot) {
     const layout = shadowRoot.querySelector<HTMLDivElement>('.layout')!
-    const getGapPerimeter = () => (this.strokeWidth + this.strokeGap) / (Math.PI * (config.size - this.strokeWidth)) * config.path
+    const getGapPerimeter = () => (this.strokeSize + this.strokeGap) / (Math.PI * (config.size - this.strokeSize)) * config.path
     const updateGap = () => layout.style.setProperty('--s_spinner-dash-gap', `${getGapPerimeter()}px`)
     updateGap()
     const renderValue = () => {
@@ -171,13 +171,13 @@ export class Spinner extends useElement({
       layout.style.setProperty('--s_spinner-indicator-dasharray', `${v}px ${100 - v}px`)
     }
     const updateStroke = () => {
-      layout.style.setProperty('--s_spinner-stroke-width', `${this.strokeWidth}px`)
+      layout.style.setProperty('--s_spinner-stroke-width', `${this.strokeSize}px`)
       updateGap()
       useThrottle(renderValue)
     }
     return {
       value: () => useThrottle(renderValue),
-      strokeWidth: updateStroke,
+      strokeSize: updateStroke,
       strokeGap: updateStroke
     }
   }

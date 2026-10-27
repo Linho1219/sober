@@ -1,4 +1,4 @@
-# base-slider
+# Base Slider
 
 该组件是 v2 最强大的组件之一，它允许你创建各种类型的滑块，如音量、进度条、音调、亮度、时间轴等等，同时也建议你使用该组件去封装自定义滑块。  
 如果你库的开发者，你也可以按需引入的方式引入该组件去封装自己的滑块。
@@ -141,6 +141,7 @@
   }
 </style>
 <template>
+  <p> 音乐播放器 </p>
   <s-base-slider class="player-slider" slidingMode="all-cumulative" end="60" max="180" oninput="this.querySelector('.time').innerText = `${Math.floor(this.end/60).toString().padStart(2,'0')}:${(this.end%60).toString().padStart(2,'0')}`">
     <!--时间-->
     <div class="time" slot="thumb-end">01:00</div>

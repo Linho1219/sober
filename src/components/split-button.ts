@@ -75,11 +75,11 @@ const style = /*css*/`
     padding: 0 10px 0 12px;
     gap: 4px;
   }
-  ::slotted(s-split-button-action:is([pressed], [hover])){
+  ::slotted(s-split-button-action:where([pressed], [hover])){
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
   }
-  ::slotted(s-split-button-trigger:is([pressed], [hover]):not([checked])){
+  ::slotted(s-split-button-trigger:where([pressed], [hover]):not([checked])){
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
@@ -112,11 +112,11 @@ const style = /*css*/`
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
-  ::slotted(s-split-button-action:is([pressed], [hover])){
+  ::slotted(s-split-button-action:where([pressed], [hover])){
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
   }
-  ::slotted(s-split-button-trigger:is([pressed], [hover]):not([checked])){
+  ::slotted(s-split-button-trigger:where([pressed], [hover]):not([checked])){
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
   }
@@ -138,11 +138,11 @@ const style = /*css*/`
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
   }
-  ::slotted(s-split-button-action:is([pressed], [hover])){
+  ::slotted(s-split-button-action:where([pressed], [hover])){
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
   }
-  ::slotted(s-split-button-trigger:is([pressed], [hover]):not([checked])){
+  ::slotted(s-split-button-trigger:where([pressed], [hover]):not([checked])){
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
   }
@@ -159,11 +159,11 @@ const actionStyle = /*css*/`
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
 }
-:host(:is([pressed], [hover])){
+:host(:where([pressed], [hover])){
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
   width: var(--s_split-button-icon-size, 20px);
   height: var(--s_split-button-icon-size, 20px);
   font-size: var(--s_split-button-icon-size, 20px);
@@ -179,12 +179,12 @@ const triggerStyle = /*css*/`
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
 }
-:host(:is([pressed], [hover])){
+:host(:where([pressed], [hover])){
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
 svg,
-::slotted(:is(.icon, svg, s-icon, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, ms-icon)){
   width: var(--s_split-button-icon-size, 20px);
   height: var(--s_split-button-icon-size, 20px);
   font-size: var(--s_split-button-icon-size, 20px);
@@ -192,7 +192,7 @@ svg,
 :host([checked]){
   border-radius: 50%;
   svg,
-  ::slotted(:is(.icon, svg, s-icon, ms-icon)[slot=icon]){
+  ::slotted(:where(.icon, svg, s-icon, ms-icon)[slot=icon]){
     transform: rotate(-180deg);
   }
 }
@@ -209,14 +209,14 @@ const actionTemplate = /*html*/`
   <slot></slot>
 </div>
 <slot name="end"></slot>
-<s-ripple></s-ripple>
+<s-ripple part="ripple" syncParentStates></s-ripple>
 `
 const triggerTemplate = /*html*/`
 <slot name="icon">
   <svg viewBox="0 -960 960 960"><path d="M480-345 240-585l56-56 184 183 184-183 56 56-240 240Z"></path></svg>
 </slot>
 <slot></slot>
-<s-ripple></s-ripple>
+<s-ripple part="ripple" syncParentStates></s-ripple>
 `
 
 export class SplitButton extends useElement({

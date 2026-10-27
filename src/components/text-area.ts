@@ -2,6 +2,7 @@ import { useElement, useProps, focusKeydownClick } from '../core/elements.js'
 import * as scheme from '../core/scheme.js'
 import { FieldSet } from './field-set.js'
 import { textEditorStyle } from '../core/style/text-editor.js'
+import { device } from '../core/utils/device.js'
 import './ripple.js'
 
 const props = useProps({
@@ -153,7 +154,7 @@ const template = /*html*/`
 </div>
 `
 
-const fieldSizing = CSS.supports('field-sizing: content')
+const fieldSizing = !device.isServer && CSS.supports('field-sizing: content')
 
 export class TextArea extends useElement({
   template, props,

@@ -211,7 +211,7 @@ const itemStyle = /*css*/`
   display: contents;
   position: relative;
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=icon]){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)[slot=icon]){
   width: 24px;
   height: 24px;
   color: currentColor;
@@ -267,7 +267,7 @@ const itemTemplate = /*html*/`
     <slot></slot>
   </div>
   <slot name="text"></slot>
-  <s-ripple class="ripple" part="ripple"></s-ripple>
+  <s-ripple class="ripple" part="ripple" syncParentStates></s-ripple>
 </div>
 `
 

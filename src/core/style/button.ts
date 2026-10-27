@@ -31,7 +31,7 @@ export const buttonStyle = /*css*/`
   color: color-mix(in srgb, ${scheme.color.onSurface} 38%, transparent) !important;
   box-shadow: none !important;
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
   width: 24px;
   height: 24px;
   font-size: 24px;

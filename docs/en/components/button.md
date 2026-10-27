@@ -1,216 +1,225 @@
 # Button
 
-Buttons, which display most operations in the UI.
+Buttons display most actions in the UI.
 
 ```html preview
 <s-button>
-  <s-icon name="star" slot="start"></s-icon>
-  Button
-  <s-icon name="close" slot="end"></s-icon>
-</s-button>
-
-<s-button>
   <s-loading slot="start"></s-loading>
   Button
-  <s-circular-progress slot="end" indeterminate></s-circular-progress>
+  <s-spinner slot="end" indeterminate></s-spinner>
 </s-button>
 ```
 
 ## Variants
 
-Set `variant` to configure different variants: `filled`, `elevated`, `tonal`, `outlined`, `text`.
+Set `variant` to choose different variants: `filled`, `elevated`, `tonal`, `outlined`, `text`.
 
 ```html preview
-<s-button variant="filled"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button>
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 
-<s-button variant="elevated"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button variant="elevated">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 
-<s-button variant="tonal"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button variant="tonal">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 
-<s-button variant="outlined"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button variant="outlined">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 
-<s-button variant="text"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button variant="text">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 ```
 
-## Disable
+## Disabled
 
-Set `disabled` to disable the button.
+Set `disabled` to disable a button.
 
 ```html preview
-<s-button disabled> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button disabled>
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 
-<s-button disabled variant="elevated"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button disabled variant="elevated">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 
-<s-button disabled variant="tonal"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button disabled variant="tonal">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 
-<s-button disabled variant="outlined"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button disabled variant="outlined">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 
-<s-button disabled variant="text"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button disabled variant="text">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 ```
 
-## Checkbox
+## Checkbox and Radio
 
-Set the `type` attribute to `checkbox`, and the button will allow selection. You can also set the `checked` attribute to enable default selection. When selected or unselected, the `change` event will be triggered.
+Set the `type` attribute to `checkbox` or `radio` to make the button checkable. You can also set the `checked` attribute to check it by default. The `change` event is fired when the checked state toggles.
 
 ```html preview
-<s-button type="checkbox" checked> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button type="checkbox">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
-
-<s-button type="checkbox" checked variant="elevated"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button type="checkbox" variant="elevated">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
-
-<s-button type="checkbox" checked variant="tonal"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button type="checkbox" variant="tonal">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
-
-<s-button type="checkbox" checked variant="outlined"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button type="checkbox" variant="outlined">
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
-
-<s-button type="checkbox" checked variant="text"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button type="checkbox" variant="text"> 
+  <ms-icon slot="start" name="home"></ms-icon>
+  Button
+</s-button>
+<hr>
+<s-button type="radio" name="select">
+  <ms-icon slot="start" name="home"></ms-icon>
+  Button
+</s-button>
+<s-button type="radio" name="select" variant="elevated">
+  <ms-icon slot="start" name="home"></ms-icon>
+  Button
+</s-button>
+<s-button type="radio" name="select" variant="tonal">
+  <ms-icon slot="start" name="home"></ms-icon>
+  Button
+</s-button>
+<s-button type="radio" name="select" variant="outlined">
+  <ms-icon slot="start" name="home"></ms-icon>
+  Button
+</s-button>
+<s-button type="radio" name="select" variant="text"> 
+  <ms-icon slot="start" name="home"></ms-icon>
   Button
 </s-button>
 ```
 
-## Dimensions
+## Size
 
-Set the `size` property to configure the button size.
+Set the `size` attribute to define the button size.
 
 ```html preview
-<s-button size="extra-small"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button size="extra-small">
+  <ms-icon slot="start" name="home"></ms-icon>
   button
 </s-button>
 
-<s-button size="small"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button size="small">
+  <ms-icon slot="start" name="home"></ms-icon>
   button
 </s-button>
 
-<s-button size="medium"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button size="medium">
+  <ms-icon slot="start" name="home"></ms-icon>
   button
 </s-button>
 
-<s-button size="large"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button size="large">
+  <ms-icon slot="start" name="home"></ms-icon>
   button
 </s-button>
 
-<s-button size="extra-large"> <!-- [!code highlight] -->
-  <s-icon name="star" slot="start"></s-icon>
+<s-button size="extra-large">
+  <ms-icon slot="start" name="home"></ms-icon>
   button
 </s-button>
 ```
 
-## Custom Style
+## Custom styles
 
-You can set styles like using regular elements, or reference styles with classes, or set it to `display: flex` to fill the container.
+You can style it like a regular element, reference styles via a class, or set `display: flex` to fill its container.
 
 ```html preview
 <s-button style="background-color: #278d1e; display: flex;"> 
-  <s-icon name="done" slot="start"></s-icon>
+  <ms-icon slot="start" name="home"></ms-icon>
   full width
-  <s-icon name="close" slot="end"></s-icon>
-  <s-tooltip>Hint</s-tooltip>
+  <s-icon slot="end"></s-icon>
+  <s-tooltip>提示</s-tooltip>
 </s-button>
 ```
 
 ## Form support
 
-This component can be used as a form element, functioning as a checkbox (`type=checkbox`), a form reset button (`type=reset`), or a submit button (`type=submit`).
+This component can be used as a form element: as a checkbox (`type=checkbox`), a form reset button (`type=reset`), or a submit button (`type=submit`).
 
 ```html preview
 <form action="http://coolaf.com/tool/params" method="get">
-  Select tags:
+  选择标签：
   <s-button name="tag" type="checkbox" value="java"> Java </s-button>
   <s-button name="tag" type="checkbox" value="rust"> Rust </s-button>
-  <s-button name="tag" type="checkbox" value="python" checked defualtChecked> Python </s-button>
+  <s-button name="tag" type="checkbox" value="python" checked defaultChecked> Python </s-button>
   <hr>
-  <s-button type="reset" variant="outlined"> Reset Form </s-button>
-  <s-button type="submit"> Submit Results </s-button>
+  <s-button type="reset" variant="outlined"> 重置表单 </s-button>
+  <s-button type="submit"> 提交结果 </s-button>
 </form>
 ```
 
----
+## Properties
 
-## Attributes
+| Name           | Type                                                     | Default   | Sync | Description                                                              |
+| -------------- | -------------------------------------------------------- | --------- | ---- | ------------------------------------------------------------------------ |
+| variant        | `filled`, `elevated`, `tonal`, `outlined`, `text`        | `filled`  | √    | Variant                                                                  |
+| size           | `small`, `extra-small`, `medium`, `large`, `extra-large` | `small`   | √    | Size                                                                     |
+| type           | `button`, `checkbox`, `radio`, `reset`, `submit`         | `button`  | √    | Type. Allows the component to act as a checkbox, radio, submit button, or reset button. |
+| disabled       | `boolean`                                                | `false`   | √    | Disabled                                                                 |
+| checked        | `boolean`                                                | `false`   | √    | Checked                                                                  |
+| defaultChecked | `boolean`                                                | `false`   | ×    | Default checked. Used as the default when the form resets; only effective on form reset. |
+| name           | `string`                                                 | `''`      | √    | Name. The `key` used when the form is submitted.                         |
+| value          | `string`                                                 | `''`      | ×    | Value. Effective on form submission.                                     |
 
-| Name           | Type                                           | Default | Sync | Description                                                                                                                               |
-| -------------- | ---------------------------------------------- | ------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| variant        | filled, elevated, tonal, outlined, text        | filled  | √    | Variant                                                                                                                                   |
-| size           | small, extra-small, medium, large, extra-large | small   | √    | Size                                                                                                                                      |
-| type           | button, checkbox, reset, submit                | button  | √    | Type, supports using the component as a checkbox, submit button, or reset button                                                          |
-| disabled       | boolean                                        | false   | √    | Disabled                                                                                                                                  |
-| checked        | boolean                                        | false   | √    | Checked                                                                                                                                   |
-| name           | string                                         | ''      | √    | Name, the `key` value when submitting the form                                                                                            |
-| defualtChecked | boolean                                        | false   | ×    | Indicates whether the item is checked by default. It is the default value when the form is reset and only takes effect during form reset. |
-| value          | string                                         | ''      | ×    | Value, valid when submitting the form                                                                                                     |
+## Events
 
-## Event
+| Name   | Parameter | Bubble | Cancelable | Description                          |
+| ------ | --------- | ------ | ---------- | ------------------------------------ |
+| change | Event     | ×      | ×          | Fired when the checked state changes |
 
-| Name   | Parameter | Bubble | Cancelable | Description                         |
-| ------ | --------- | ------ | ---------- | ----------------------------------- |
-| change | Event     | ×      | ×          | Emitted when the change is selected |
+## Slots
 
-## Slot
-
-| Name      | Description                                                            |
-| --------- | ---------------------------------------------------------------------- |
-| Anonymous | Button text                                                            |
-| start     | Start, supports svg, s-icon, s-loading, s-circular-progress by default |
-| end       | End, supports svg, s-icon, s-loading, s-circular-progress by default   |
+| Name      | Description                                                                                              |
+| --------- | ------------------------------------------------------------------------------------------------------- |
+| Anonymous | Button content. Supports text, `.icon`, `svg`, `s-icon`, `s-loading`, `s-spinner`, `ms-icon` by default. |
+| start     | Leading content. Same as Anonymous by default.                                                          |
+| end       | Trailing content. Same as Anonymous by default.                                                         |
 
 ## HTML Tag Attributes
 
-| Name    | Description                 |
-| ------- | --------------------------- |
-| pressed | Set when pressed            |
-| hover   | Set when the mouse moves in |
+| Name    | Description          |
+| ------- | -------------------- |
+| pressed | Set when pressed     |
+| hover   | Set on pointer enter |
 
-## Keyboard Shortcuts
+## Keyboard shortcuts
 
-Use the `Tab` key to switch focus, and use the `Space` or `Enter` key to trigger a click event.
+Use `Tab` to move focus, and `Space` or `Enter` to trigger the click event.
 
 ## Dependencies
 
-When this component is introduced, the following components will be automatically introduced:
+When this component is imported, it automatically imports the following components:
 
 - [Ripple](./ripple.md)

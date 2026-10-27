@@ -59,7 +59,7 @@ const style = /*css*/`
 :host([variant=text]){
   color: ${scheme.color.primary};
 }
-:host(:is([type=checkbox], [type=radio])){
+:host(:where([type=checkbox], [type=radio])){
   &:host(:not([variant])){
     background: ${scheme.color.surfaceContainer};
     color: ${scheme.color.onSurfaceVariant};
@@ -68,7 +68,7 @@ const style = /*css*/`
     &:host(:not([pressed])){
       border-radius: 12px;
     }
-    &:host(:is(:not([variant]), [variant=elevated])){
+    &:host(:where(:not([variant]), [variant=elevated])){
       background: ${scheme.color.primary};
       color: ${scheme.color.onPrimary};
     }
@@ -94,7 +94,7 @@ const style = /*css*/`
     }
   }
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
   width: 20px;
   height: 20px;
   font-size: 20px;
@@ -112,7 +112,7 @@ const style = /*css*/`
   &:host([type=checkbox][checked]:not([pressed])){
     border-radius: 12px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 16px;
     height: 16px;
     font-size: 16px;
@@ -129,7 +129,7 @@ const style = /*css*/`
   &:host([type=checkbox][checked]:not([pressed])){
     border-radius: 16px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 24px;
     height: 24px;
     font-size: 24px;
@@ -147,7 +147,7 @@ const style = /*css*/`
   &:host([type=checkbox][checked]:not([pressed])){
     border-radius: 28px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 32px;
     height: 32px;
     font-size: 32px;
@@ -165,7 +165,7 @@ const style = /*css*/`
   &:host([type=checkbox][checked]:not([pressed])){
     border-radius: 28px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 40px;
     height: 40px;
     font-size: 40px;
@@ -179,7 +179,7 @@ const template = /*html*/`
   <slot></slot>
 </div>
 <slot name="end"></slot>
-<s-ripple part="ripple"></s-ripple>
+<s-ripple part="ripple" syncParentStates></s-ripple>
 `
 
 export class Button extends useElement({

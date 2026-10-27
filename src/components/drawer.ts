@@ -27,7 +27,7 @@ const style = /*css*/`
   .end{
     display: none;
   }
-  ::slotted(:is([slot=start], [slot=end])){
+  ::slotted(:where([slot=start], [slot=end])){
     position: absolute;
     max-width: 80%;
     transition-property: box-shadow;
@@ -42,7 +42,7 @@ const style = /*css*/`
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  &:host(:is([startModalOpen], [endModalOpen])) .scrim{
+  &:host(:where([startModalOpen], [endModalOpen])) .scrim{
     pointer-events: auto;
     opacity: 1;
   }
@@ -103,7 +103,7 @@ const style = /*css*/`
   left: 0;
   right: auto;
 }
-::slotted(:is([slot=start], [slot=end])){
+::slotted(:where([slot=start], [slot=end])){
   width: 260px;
   height: 100%;
   max-width: 100%;

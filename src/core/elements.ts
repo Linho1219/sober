@@ -1,24 +1,9 @@
 import * as scheme from './scheme.js'
+import { device } from './utils/device.js'
+import { addDownEvent } from './utils/events/down.js'
+import { addHoverEvent } from './utils/events/hover.js'
 
-const pointerMedia = matchMedia('(any-pointer: coarse)')
-const pointerMedia2 = matchMedia('(any-pointer: fine)')
-const orientationMedia = matchMedia('(orientation: portrait)')
-
-export const device = {
-  get touchEnabled() {
-    return pointerMedia.matches
-  },
-  get mouseEnabled() {
-    return pointerMedia2.matches
-  },
-  orientation: {
-    get portrait() {
-      return orientationMedia.matches
-    }
-  }
-}
-
-const supports = {
+export const supports = {
   CSS: { CSSStyleSheet: false }
 }
 
@@ -30,6 +15,7 @@ try {
 } catch (error) { }
 
 const createStyleSheet = (css: string) => {
+  if (device.isServer) return undefined as any
   if (supports.CSS.CSSStyleSheet && 'adoptedStyleSheets' in ShadowRoot.prototype) {
     const sheet = new CSSStyleSheet()
     sheet.replaceSync(css)
@@ -112,7 +98,8 @@ const baseStyle = /*css*/`
 *,
 ::before,
 ::after,
-::slotted(svg){
+::slotted(svg),
+::slotted(ms-icon){
   transition-timing-function: inherit;
   transition-duration: inherit;
 }
@@ -208,6 +195,11 @@ export const useElement = <
   addStyle(css: string): number
   removeStyle(index?: number): void
 } => {
+  if (device.isServer) return class {
+    static define(name: string) {
+      return name
+    }
+  } as never
   const map = new WeakMap<HTMLElement, MapValue<SetupReturn<Props, Expose>, Props, States>>()
   const templateNode = document.createElement('template')
   templateNode.innerHTML = options.template ?? ''
@@ -238,6 +230,7 @@ export const useElement = <
     static formAssociated = options.states?.includes('formable')
     static connectedNodes: (El<Props, Expose, Events> & HTMLElement)[] = []
     static define(name: string) {
+      if (device.isServer) return name
       if (!customElements.get(name)) customElements.define(name, this)
       return name
     }
@@ -268,6 +261,7 @@ export const useElement = <
     }
     constructor() {
       super()
+      if (device.isServer) return
       const shadowRoot = this.attachShadow({ mode: 'open', serializable: true })
       //布局和样式
       styles.forEach((item) => {
@@ -347,26 +341,16 @@ export const useElement = <
       //绑定状态
       if (options.states?.includes('hoverable')) {
         const name = 'hover'
-        const hovering = (e: PointerEvent) => {
-          if (!device.mouseEnabled || e.pointerType !== 'mouse') return
-          this.toggleAttribute(name, e.type === 'pointerenter')
-        }
-        this.addEventListener('pointerenter', hovering)
-        this.addEventListener('pointerleave', hovering)
-        this.addEventListener('pointercancel', hovering)
+        addHoverEvent(this, () => {
+          this.setAttribute(name, '')
+          return () => this.removeAttribute(name)
+        })
       }
       if (options.states?.includes('pressable')) {
         const name = 'pressed'
-        this.addEventListener('pointerdown', (e) => {
-          if (e.button !== 0) return
+        addDownEvent(this, () => {
           this.setAttribute(name, '')
-          const remove = () => {
-            this.removeAttribute(name)
-            document.removeEventListener('pointerup', remove)
-            document.removeEventListener('pointercancel', remove)
-          }
-          document.addEventListener('pointerup', remove)
-          document.addEventListener('pointercancel', remove)
+          return () => this.removeAttribute(name)
         })
       }
       if (options.states?.includes('focusable')) focusKeydownClick(this)
@@ -470,21 +454,4 @@ export const getParentDepth = (el: HTMLElement & { parentDepth: number }) => {
     ancestor = ancestor.parentNode
   }
   return ancestor
-}
-
-const div = document.createElement('div')
-div.setAttribute('style', `position: fixed;font-size: 12px; width: 100%;max-height: 50%;padding: 0 12px;overflow: hidden;top: 0;left: 0; pointer-events: none;z-index: 99;color: #fff;background: rgba(0,0,0,0.5);`)
-if (['1996', '1104'].includes(window.location.port)) {
-  document.body.appendChild(div)
-}
-
-export const print = (...values: any[]) => {
-  const fragment = document.createDocumentFragment()
-  const date = new Date()
-  values.forEach((value) => {
-    const text = document.createTextNode(`${date.getMinutes()}:${date.getMilliseconds()}: ${String(value)},`)
-    fragment.appendChild(text)
-  })
-  div.insertBefore(fragment, div.firstChild)
-  div.insertBefore(document.createElement('hr'), div.firstChild)
 }

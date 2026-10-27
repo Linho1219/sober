@@ -1,8 +1,8 @@
 # Sober (Material 3 Expressive)
 
 [![npm version](https://badge.fury.io/js/sober.svg)](https://badge.fury.io/js/sober)
-![Static Badge](https://img.shields.io/badge/complete%20build-192kb-blue)
-![Static Badge](https://img.shields.io/badge/gzip-52kb-wheat)
+![Static Badge](https://img.shields.io/badge/complete%20build-219kb-blue)
+![Static Badge](https://img.shields.io/badge/gzip-48kb-wheat)
 
 Sober 是实现 Google Material 3 Expressive 设计规范轻量级的响应式 UI 组件库。  
 
@@ -74,8 +74,8 @@ scheme.apply(page)
 
 ## 兼容性 (Browser compatibility)
 
-| 浏览器 Browser    | 支持 Support |
-| ----------------- | ------------ |
-| Chromium (Chrome) | 88+          |
-| Gecko (Firefox)   | 78+          |
-| Webkit (Safari)   | 15.4+        |
+| 浏览器 Browser | 内核 engine | 版本 Version |
+| -------------- | ----------- | ------------ |
+| Chrome         | Chromium    | 88+          |
+| Firefox        | Gecko       | 78+          |
+| Safari         | Webkit      | 15.4+        |

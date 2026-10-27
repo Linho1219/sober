@@ -69,7 +69,7 @@ const style = /*css*/`
   border-radius: 20px;
   font-size: calc(var(--s-font-size, 1) * 22px);
   padding: 0 26px;
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 28px;
     height: 28px;
     font-size: 28px;
@@ -82,7 +82,7 @@ const style = /*css*/`
   border-radius: 28px;
   font-size: calc(var(--s-font-size, 1) * 24px);
   padding: 0 28px;
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 36px;
     height: 36px;
     font-size: 36px;
@@ -96,7 +96,7 @@ const template = /*html*/`
   <slot></slot>
 </div>
 <slot name="end"></slot>
-<s-ripple class="ripple" part="ripple"></s-ripple>
+<s-ripple class="ripple" part="ripple" syncParentStates></s-ripple>
 `
 
 export class Fab extends useElement({

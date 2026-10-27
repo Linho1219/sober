@@ -5,7 +5,7 @@
 ```html preview
 <s-split-button>
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>
@@ -19,7 +19,7 @@
 ```html preview
 <s-split-button variant="elevated">
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>
@@ -27,7 +27,7 @@
 
 <s-split-button variant="tonal">
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>
@@ -35,7 +35,7 @@
 
 <s-split-button variant="outlined">
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>
@@ -49,7 +49,7 @@
 ```html preview
 <s-split-button>
   <s-split-button-action disabled>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger disabled></s-split-button-trigger>
@@ -57,7 +57,7 @@
 
 <s-split-button variant="elevated">
   <s-split-button-action disabled>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger disabled></s-split-button-trigger>
@@ -65,7 +65,7 @@
 
 <s-split-button variant="tonal">
   <s-split-button-action disabled>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger disabled></s-split-button-trigger>
@@ -73,7 +73,7 @@
 
 <s-split-button variant="outlined">
   <s-split-button-action disabled>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger disabled></s-split-button-trigger>
@@ -87,7 +87,7 @@
 ```html preview
 <s-split-button size="extra-small">
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>
@@ -95,7 +95,7 @@
 
 <s-split-button size="small">
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>
@@ -103,7 +103,7 @@
 
 <s-split-button size="medium">
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>
@@ -111,7 +111,7 @@
 
 <s-split-button size="large">
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>
@@ -119,7 +119,7 @@
 
 <s-split-button size="extra-large">
   <s-split-button-action>
-    <svg viewBox="0 -960 960 960" slot="start"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"></path></svg>
+    <ms-icon slot="start" name="home"></ms-icon>
     label
   </s-split-button-action>
   <s-split-button-trigger></s-split-button-trigger>

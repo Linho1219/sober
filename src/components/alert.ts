@@ -63,12 +63,12 @@ const style = /*css*/`
     border-radius: 8px;
   }
   svg,
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 20px;
     height: 20px;
     font-size: 20px;
   }
-  ::slotted(:is(.icon, svg, s-icon, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, ms-icon)){
     transition-duration: inherit;
     transition-timing-function: inherit;
   }
@@ -130,7 +130,7 @@ const style = /*css*/`
   }
   &:host([open]){
     .toggle svg,
-    ::slotted(:is(.icon, svg, s-icon, ms-icon)[slot=toggle-icon]){
+    ::slotted(:where(.icon, svg, s-icon, ms-icon)[slot=toggle-icon]){
       transform: rotate(-180deg);
     }
   }
@@ -146,7 +146,7 @@ const style = /*css*/`
   padding: 12px 0;
   margin: -12px 0;
 }
-::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
   width: 24px;
   height: 24px;
   font-size: 24px;

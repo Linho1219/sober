@@ -12,8 +12,7 @@ const props = useProps({
   type: ['icon-button', 'checkbox', 'radio', 'submit', 'reset'],
   defaultChecked: false,
   name: '',
-  $value: '',
-  $requiring: ''
+  $value: ''
 })
 
 const style = /*css*/`
@@ -47,8 +46,8 @@ const style = /*css*/`
     border-radius: inherit;
   }
 }
-:host(:is([type=checkbox], [type=radio])){
-  &:host(:is(:not([variant]), [variant=filled])){
+:host(:where([type=checkbox], [type=radio])){
+  &:host(:where(:not([variant]), [variant=filled])){
     background: ${scheme.color.surfaceContainer};
     color: ${scheme.color.onSurfaceVariant};
   }
@@ -56,10 +55,7 @@ const style = /*css*/`
     &:host(:not([pressed])){
       border-radius: 12px;
     }
-    &:host(:not([variant])){
-      background: ${scheme.color.primaryContainer};
-      color: ${scheme.color.onPrimaryContainer};
-    }
+    &:host(:not([variant])),
     &:host([variant=filled]){
       background: ${scheme.color.primary};
       color: ${scheme.color.onPrimary};
@@ -92,7 +88,7 @@ const style = /*css*/`
   &:host([type=checkbox][checked]:not([pressed])){
     border-radius: 12px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 20px;
     height: 20px;
     font-size: 20px;
@@ -120,7 +116,7 @@ const style = /*css*/`
   &:host([type=checkbox][checked]:not([pressed])){
     border-radius: 28px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 32px;
     height: 32px;
     font-size: 32px;
@@ -132,12 +128,12 @@ const style = /*css*/`
   border-radius: 68px;
   font-size: calc(var(--s-font-size, 1) * 40px);
   &:host([pressed]){
-    border-radius: 8px;
+    border-radius: 16px;
   }
   &:host([type=checkbox][checked]:not([pressed])){
-    border-radius: 12px;
+    border-radius: 28px;
   }
-  ::slotted(:is(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
+  ::slotted(:where(.icon, svg, s-icon, s-loading, s-spinner, ms-icon)){
     width: 40px;
     height: 40px;
     font-size: 40px;
@@ -192,7 +188,7 @@ const style = /*css*/`
 
 const template = /*html*/`
 <slot></slot>
-<s-ripple class="ripple" part="ripple"></s-ripple>
+<s-ripple class="ripple" part="ripple" syncParentStates></s-ripple>
 `
 
 export class IconButton extends useElement({

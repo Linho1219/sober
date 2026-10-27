@@ -66,7 +66,7 @@ const style = /*css*/`
     position: relative;
     padding: 10%;
     background: ${scheme.color.outline};
-    ::slotted(:is(.icon, svg, s-icon, ms-icon)){
+    ::slotted(:where(.icon, svg, s-icon, ms-icon)){
       color: currentColor;
       fill: currentColor;
       width: 100%;
@@ -133,7 +133,7 @@ const style = /*css*/`
 :host([readOnly]){
   pointer-events: none;
 }
-:host(:is([hover], [pressed])){
+:host(:where([hover], [pressed])){
   .handle::before{
     opacity: 1;
     transform: scale(1);
